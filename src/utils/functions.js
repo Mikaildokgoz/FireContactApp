@@ -6,7 +6,7 @@ import Toastify from "./toast";
 // Bilgi Ekleme
 export const AddUser=(info)=>{
     const db = getDatabase();
-    const userRef=ref(db,"baglanti");
+    const userRef=ref(db,"contact");
     const newUserRef=push(userRef)
     set((newUserRef),{
         username:info.username,
@@ -44,6 +44,7 @@ export const useFetch=()=>{
 // Bilgi silme
 export const DeleteUser=(id)=>{
         const db = getDatabase();
+        
         remove(ref(db,"contact/"+id))
 
         Toastify("Kullanıcı bilgisi silindi")
@@ -55,7 +56,7 @@ export const EditUser=(info)=>{
     const db = getDatabase();
     const updates = {};
 
-    updates["baglanti/"+info.id]=info;
+    updates["contact/"+info.id]=info;
     return update(ref(db),updates);
 
 }
