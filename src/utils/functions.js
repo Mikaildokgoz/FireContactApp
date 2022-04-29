@@ -47,7 +47,7 @@ export const DeleteUser=(id)=>{
         const db = getDatabase();
         // const userRef=ref(db,"baglanti");
         remove(ref(db,"baglanti/"+id))
-
+console.log(firebase);
         Toastify("Kullanıcı bilgisi silindi")
 }
 
