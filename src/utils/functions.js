@@ -15,7 +15,7 @@ import Toastify from "./toast";
 // Bilgi Ekleme
 export const AddUser = (info) => {
   const db = getDatabase();
-  const userRef = ref(db, "baglanti");
+  const userRef = ref(db, "contact");
   const newUserRef = push(userRef);
   set(newUserRef, {
     username: info.username,
@@ -34,7 +34,7 @@ export const useFetch = () => {
     setIsLoading(true);
 
     const db = getDatabase();
-    const userRef = ref(db, "baglanti");
+    const userRef = ref(db, "contact");
 
     onValue(userRef, (snapshot) => {
       const data = snapshot.val();
@@ -53,8 +53,8 @@ export const useFetch = () => {
 // Bilgi silme
 export const DeleteUser = (id) => {
   const db = getDatabase();
-  // const userRef=ref(db,"baglanti");
-  remove(ref(db, "baglanti/" + id));
+  // const userRef=ref(db,"contact");
+  remove(ref(db, "contact/" + id));
   console.log(firebase);
   Toastify("Kullanıcı bilgisi silindi");
 };
@@ -65,6 +65,6 @@ export const EditUser = (info) => {
   const db = getDatabase();
   const updates = {};
 
-  updates["baglanti/" + info.id] = info;
+  updates["contact/" + info.id] = info;
   return update(ref(db), updates);
 };
